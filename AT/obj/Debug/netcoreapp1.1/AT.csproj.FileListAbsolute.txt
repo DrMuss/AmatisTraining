@@ -1,0 +1,10 @@
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\bin\Debug\netcoreapp1.1\AT.deps.json
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\bin\Debug\netcoreapp1.1\AT.runtimeconfig.json
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\bin\Debug\netcoreapp1.1\AT.runtimeconfig.dev.json
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\bin\Debug\netcoreapp1.1\AT.dll
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\bin\Debug\netcoreapp1.1\AT.pdb
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\obj\Debug\netcoreapp1.1\AT.AssemblyInfo.cs
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\obj\Debug\netcoreapp1.1\AT.dll
+c:\users\adam\documents\visual studio 2017\Projects\AT\AT\obj\Debug\netcoreapp1.1\AT.pdb
+C:\Users\Adam\documents\visual studio 2017\Projects\AT\AT\obj\Debug\netcoreapp1.1\AT.csprojResolveAssemblyReference.cache
+C:\Users\Adam\Documents\Visual Studio 2017\Projects\AT\AT\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
