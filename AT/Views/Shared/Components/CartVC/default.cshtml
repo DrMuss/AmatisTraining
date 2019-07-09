@@ -1,0 +1,49 @@
+﻿@model AT.Data.Courses.Cart
+@using AT.Data.Courses
+<li class="dropdown dropdown-hover">
+    <a href="#" class="header-cart" data-toggle="dropdown">
+        <i class="fa fa-shopping-bag"></i>
+        <span class="total">@Model.CartLines.Count()</span>
+        <span class="arrow top"></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-cart p-0">
+        <div class="cart-header">
+            <h4 class="cart-title">Shopping Bag (@Model.CartLines.Count()) </h4>
+        </div>
+        <div class="cart-body">
+            <ul class="cart-item">
+                @foreach (CartLine line in Model.CartLines)
+                {
+
+                    <li>
+                        <div class="cart-item-image"><img src="@line.Product.ImageUrl" alt="" /></div>
+                        <div class="cart-item-info">
+                            <h4>@line.Product.Name</h4>
+                            <p class="price">£@line.Product.Price <text>plus VAT</text></p>
+                        </div>
+                        <div class="cart-item-close">
+                            <a asp-controller="Cart"
+                               asp-action="RemoveFromCart"
+                               asp-route-productid="@line.Product.Id"
+                               asp-route-returnurl ="@ViewData["ReturnUrl"]"
+                               data-toggle="tooltip" 
+                                        data-title="Remove">&times;</a>
+                        </div>
+                    </li>
+                }
+             </ul>
+        </div>
+        <div class="cart-footer">
+            <div class="row row-space-10">
+                <div class="col-xs-6">
+                   
+                </div>
+                <div class="col-xs-6 pull-right">
+                    <a asp-controller="Checkout"
+                       asp-action="CheckoutCart" 
+                       class="btn btn-inverse btn-block">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

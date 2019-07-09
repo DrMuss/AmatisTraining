@@ -1,0 +1,122 @@
+﻿@model  AT.Models.ContactViewModels.ContactVM
+
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="page-container" class="fade">
+
+    <div id="page-header" class="section-container page-header-container bg-black">
+        <!-- BEGIN page-header-cover -->
+        <div class="page-header-cover">
+            <img src="~/images/cover/cover-14.jpg" />
+        </div>
+        <!-- END page-header-cover -->
+        <!-- BEGIN container -->
+        <div class="container">
+            <h1 class="page-header">Contact <b>Us</b></h1>
+        </div>
+        <!-- END container -->
+    </div>
+
+    <!-- begin #contact -->
+    <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
+        <!-- begin container -->
+        <div class="container">
+            <div class="row g-mb-20">
+                @if (Model.Acknowledge != null)
+        {
+                    <div class="alert alert-success">
+                        @Model.Acknowledge
+                    </div>
+        }
+            </div>
+            <p class="content-desc">
+                Amatis Training offers professional business analysis training courses at your convenience. Each course has a ‘mobile first’ design policy so you can access your course anytime, anywhere! It is a training programme, a reference model, an aide memoire.  Self-study is easier than ever.
+            </p>
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
+                    <h3>If you would like to discuss your training requirements, get in touch with us.</h3>
+                    <p>
+                        Our courses are available to business analysts around the world in multiple languages. If you have an international team, this ensures that everyone receives the same comprehensive level of training. This then enables communication and collaboration across continents.
+                    </p>
+                    <p>
+                        <strong>Amatis Training</strong><br />
+                        22 Trinity Road,<br />
+                        Bath<br />
+                        BA2 5AB<br />
+                        Phone: +44 (0) 7712 304 355<br />
+                    </p>
+                    <p>
+                        <span class="phone">+44 (0) 7712 304 3558</span><br />
+                        <a href="mailto:enquiries@amatistraining.com">enquiries@amatistraining.com</a>
+                    </p>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
+                    <form asp-controller="Contact"
+                          asp-action="Contact"
+                          method="post"
+                          class="form-horizontal">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group row m-b-15">
+                            <label class="col-form-label col-md-3 text-md-right">Name <span class="text-theme">*</span></label>
+                            <div class="col-md-9">
+                                <input asp-for="Name" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-15">
+                            <label class="col-form-label col-md-3 text-md-right">Email <span class="text-theme">*</span></label>
+                            <div class="col-md-9">
+                                <input asp-for="Email" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-15">
+                            <label class="col-form-label col-md-3 text-md-right">Message <span class="text-theme">*</span></label>
+                            <div class="col-md-9">
+                                <textarea asp-for="Message" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-15">
+                            <label class="col-form-label col-md-3"></label>
+                            <div class="col-md-9">
+                                <div class="g-recaptcha pull-left" data-sitekey="@Model.Recaptcha"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-15">
+                            <label class="col-form-label col-md-3"></label>
+                            <div class="col-md-9 text-left">
+                                <button type="submit" class="btn btn-theme btn-block">Send Message</button>
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #contact -->
+    </div>
+
+@section scripts
+{
+<script async defer src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script async defer src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LdObqQUAAAAAGgR1rdRlYYTsaMECXXPsTeMKbgB', { action: 'validate_callback' }).then(function (token) {
+                // add token value to form
+                document.getElementById('g-recaptcha-response').value = token;
+            });
+        });
+</script>
+}

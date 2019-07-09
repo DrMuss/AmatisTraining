@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AT.Data.FAQ.FAQ>
+@using AT.Data.FAQ
+
+@{
+    ViewData["Title"] = "FAQs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="page-container" class="fade">
+   
+        <div id="page-header" class="section-container page-header-container bg-black">
+            <!-- BEGIN page-header-cover -->
+            <div class="page-header-cover">
+                <img src="~/images/cover/cover-13.jpg" />
+            </div>
+            <!-- END page-header-cover -->
+            <!-- BEGIN container -->
+            <div class="container">
+                <h1 class="page-header">Frequently Asked <b>Questions</b></h1>
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- BEGIN #faq -->
+        <div id="faq" class="section-container">
+            <!-- BEGIN container -->
+            <div class="container">
+
+                <!-- BEGIN accordion -->
+                <div class="accordion faq" id="faq-list">
+                    @{int i = 1; }
+                    @foreach (FAQ faq in Model)
+                    {
+                        <div class="card">
+                            <a href="#" class="card-header bg-black text-white" id="faq-@i-heading" data-toggle="collapse" data-target="#faq-@i">
+                                <i class="fa fa-question-circle fa-fw m-r-5"></i> @i<text>.</text> @faq.Question
+                            </a>
+                            <div id="faq-@i" 
+                                 
+                                class="collapse @if (i == 1)
+                                { <text>show</text>} "
+
+                                data-parent="#faq-list">
+                                <div class="card-body">
+                                    <p class="m-b-0">
+                                        @faq.Answer
+                                     </p>
+                                </div>
+                            </div>
+                        </div>
+
+                            i++;
+
+                        }
+         
+                    <!-- END card -->
+                </div>
+                <!-- END accordion -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #faq -->
+    </div>

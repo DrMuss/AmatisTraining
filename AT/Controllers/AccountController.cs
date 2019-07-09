@@ -12,6 +12,10 @@ using Microsoft.Extensions.Options;
 using AT.Data.Identity;
 using AT.Models.AccountViewModels;
 using AT.Services.Messaging;
+using AT.Services.Recapture;
+using System.Net.Http;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace AT.Controllers
 {
@@ -21,7 +25,7 @@ namespace AT.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
-        private readonly ISmsSender _smsSender;
+        private readonly RecaptchaConfig _recatchaConfig;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
 
@@ -30,15 +34,15 @@ namespace AT.Controllers
             SignInManager<ApplicationUser> signInManager,
             IOptions<IdentityCookieOptions> identityCookieOptions,
             IEmailSender emailSender,
-            ISmsSender smsSender,
+           IOptions<RecaptchaConfig> recaptchaSettings,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
             _emailSender = emailSender;
-            _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _recatchaConfig = recaptchaSettings.Value;
         }
 
         //
@@ -72,10 +76,11 @@ namespace AT.Controllers
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
+                /*
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                }
+                }*/
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
@@ -91,6 +96,29 @@ namespace AT.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        // A function that checks reCAPTCHA results
+        // You might want to move it to some common class
+        [AllowAnonymous]
+        public static bool ReCaptchaPassed(string gRecaptchaResponse, string secret)
+        {
+            HttpClient httpClient = new HttpClient();
+            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secret}&response={gRecaptchaResponse}").Result;
+            if (res.StatusCode != HttpStatusCode.OK)
+            {
+
+                return false;
+            }
+
+            string JSONres = res.Content.ReadAsStringAsync().Result;
+            dynamic JSONdata = JObject.Parse(JSONres);
+            if (JSONdata.success != "true")
+            {
+                return false;
+            }
+
+            return true;
+        }
+
 
         //
         // GET: /Account/Register
@@ -99,7 +127,9 @@ namespace AT.Controllers
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            model.Recaptcha = _recatchaConfig.SiteKey;
+            return View(model);
         }
 
         //
@@ -112,16 +142,36 @@ namespace AT.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                if (!ReCaptchaPassed(
+                                   Request.Form["g-recaptcha-response"], // that's how you get it from the Request object
+                                   _recatchaConfig.SecretKey))
+                {
+                    ModelState.AddModelError(string.Empty, "You failed the CAPTCHA.");
+                    return View(model);
+                }
+
+                var user = new ApplicationUser {
+                                                UserName = model.Email,
+                                                FirstName = model.FirstName,
+                                                LastName = model.LastName,
+                                                Company = model.Company,
+                                                Division = model.Division,
+                                                JobTitle = model.JobTitle,
+                                                Mobile = model.Mobile,
+                                                Email = model.Email };
+
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    await _emailSender.SendEmailAsync(model.Email,
+                                                        "Confirm your account",
+                                                        $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToLocal(returnUrl);
@@ -278,11 +328,13 @@ namespace AT.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
-                //var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                //return View("ForgotPasswordConfirmation");
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                await _emailSender.SendEmailAsync(model.Email,
+                                                    "Reset Password",
+                                                    $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
@@ -388,10 +440,7 @@ namespace AT.Controllers
             {
                 await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
             }
-            else if (model.SelectedProvider == "Phone")
-            {
-                await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
-            }
+           
 
             return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }

@@ -25,6 +25,9 @@ using Microsoft.AspNetCore.Http;
 using AT.Helpers;
 using Joonasw.AspNetCore.SecurityHeaders;
 using Microsoft.AspNetCore.Rewrite;
+using AT.Data.Courses;
+using AT.Data.Blog;
+using AT.Data.FAQ;
 
 namespace AT
 {
@@ -62,8 +65,12 @@ namespace AT
 
 
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BlogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<FaqContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ATContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
 
             services.AddIdentity<ApplicationUser, IdentityRole> (options => {
                 options.Password.RequireDigit = false;
@@ -112,8 +119,15 @@ namespace AT
             services.AddScoped<IDbInitializer, DbInitializer>();
 
             // Add application services.
+            services.AddSingleton<ICart, Cart>();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<IStripePaymentService, StripePaymentService>();
+
+            //Add repositories
+            services.AddTransient<IATRepository, ATRepository>();
+            services.AddTransient<IBlogRepository, BlogRepository>();
+            services.AddTransient<IFaqRepository, FaqRepository>();
 
         }
 

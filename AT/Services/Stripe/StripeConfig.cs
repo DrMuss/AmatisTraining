@@ -9,5 +9,7 @@ namespace AT.Services.Stripe
     {
         public string PublishableKey { get; set; }
         public string Secretkey { get; set; }
+
+        public string WebHookSecret { get; set; }
     }
 }

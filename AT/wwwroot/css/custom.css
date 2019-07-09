@@ -1,0 +1,862 @@
+﻿/* -------------------------------
+   6.0 Post Setting
+------------------------------- */
+
+/* 6.1 Post List Setting */
+
+.post-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .post-list > li:before,
+    .post-list > li:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .post-list > li {
+        padding: 0;
+    }
+
+        .post-list > li + li {
+            margin-top: 60px;
+        }
+
+.post-left-info {
+    width: 50px;
+    float: left;
+    margin-right: 20px;
+}
+
+.post-date {
+    font-size: 12px;
+    line-height: 1.1;
+    margin: 0 auto 2px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+    .post-date .day {
+        color: #333;
+        font-size: 24px;
+        display: block;
+    }
+
+    .post-date .month {
+        display: block;
+        font-size: 12px;
+        margin-top: 5px;
+        color: #333;
+    }
+
+    .post-date + .post-likes {
+        border-top: 2px solid #ddd;
+    }
+
+.post-likes {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.post-left-info + .post-content {
+    margin-left: 70px;
+}
+
+.post-image {
+    margin-bottom: 25px;
+}
+
+.post-image-cover {
+    position: relative;
+    padding-top: 56%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.post-video {
+    margin-bottom: 25px;
+}
+
+.post-list blockquote {
+    border: none;
+    background: #e9edef;
+    font-size: 18px;
+    padding: 30px;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.post-title {
+    margin: 0 0 5px;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000;
+}
+
+    .post-title a {
+        color: #000;
+    }
+
+.post-by {
+    display: block;
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 20px;
+    padding: 0 0;
+}
+
+    .post-by .divider {
+        margin: 0 5px;
+        font-size: 10px;
+        color: #333;
+        position: relative;
+        top: -1px;
+    }
+
+.post-desc {
+    line-height: 20px;
+    color: #696969;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.read-btn-container {
+    text-align: right;
+    font-size: 12px;
+}
+
+    .read-btn-container a {
+        color: #333;
+    }
+
+
+/* 6.2 Post Grid Setting */
+
+.post-grid {
+    margin: -10px;
+}
+
+    .post-grid:before,
+    .post-grid:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .post-grid > li,
+    .post-li {
+        width: 33.33%;
+        padding: 10px;
+    }
+
+
+    .post-grid.post-grid-1 > li,
+    .post-grid.post-grid-1 > .post-li {
+        width: 99%;
+        padding: 10px;
+        margin-bottom:20px;
+    }
+
+    .post-grid.post-grid-2 > li,
+    .post-grid.post-grid-2 > .post-li {
+        width: 50%;
+    }
+
+    .post-grid.post-grid-3 > li,
+    .post-grid.post-grid-3 > .post-li {
+        width: 33.33%;
+    }
+
+    .post-grid.post-grid-4 > li,
+    .post-grid.post-grid-4 > .post-li {
+        width: 25%;
+    }
+
+    .post-grid .post-image,
+    .post-grid .post-video {
+        margin: -1px -1px 0;
+    }
+
+    .post-grid blockquote {
+        margin-bottom: 0;
+    }
+
+    .post-grid .post-title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .post-grid .post-content {
+        border: 1px solid rgba(0,0,0,0.125);
+    }
+
+    .post-grid .post-info {
+        padding: 15px;
+    }
+
+/* -------------------------------
+   7.0 Page Setting
+------------------------------- */
+/* -------------------------------
+   7.0 Page Setting
+------------------------------- */
+
+/* 7.1 Details Page Setting */
+
+.post-detail .post-image {
+    margin-bottom: 15px;
+}
+
+.post-detail .post-by {
+    font-size: 12px;
+}
+
+.post-detail .post-desc {
+    margin-bottom: 30px;
+}
+
+    .post-detail .post-desc p {
+        margin-bottom: 0;
+    }
+
+        .post-detail .post-desc p + p {
+            margin-top: 15px;
+        }
+
+
+
+@media (min-width: 1920px) {
+    /* Post Setting */
+
+    .post-left-info {
+        width: 60px;
+    }
+
+    .post-likes {
+        font-size: 14px;
+    }
+
+    .post-date .day {
+        font-size: 28px;
+    }
+
+    .post-date .month {
+        font-size: 14px;
+    }
+
+    .post-title,
+    .post-grid .post-title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .post-by,
+    .post-detail .post-by {
+        font-size: 15px;
+    }
+
+    .post-desc {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .read-btn-container {
+        font-size: 16px;
+    }
+}
+
+    @media (max-width: 767px) {
+        /* Post List Setting */
+
+        .post-left-info {
+            float: none;
+            width: auto;
+            margin: 0 0 10px;
+        }
+
+            .post-left-info:before,
+            .post-left-info:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+
+        .post-date,
+        .post-likes {
+            padding: 0;
+            float: left;
+        }
+
+        .post-date {
+            margin: 0;
+            line-height: inherit;
+        }
+
+            .post-date .day,
+            .post-date .month {
+                font-size: 12px;
+                display: inline;
+            }
+
+            .post-date + .post-likes {
+                margin-left: 15px;
+                padding-left: 15px;
+                border: none;
+                border-left: 2px solid #ddd;
+            }
+
+        .post-left-info + .post-content {
+            margin: 0;
+        }
+
+        .post-image,
+        .post-video,
+        .post-list blockquote {
+            margin-bottom: 15px;
+        }
+
+        .post-title {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        .post-by {
+            margin-bottom: 10px;
+            line-height: 16px;
+        }
+
+        .post-desc {
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .post-li,
+        .post-grid.post-grid-2 > .post-li,
+        .post-grid.post-grid-3 > .post-li,
+        .post-grid.post-grid-4 > .post-li {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 600px) {
+
+        /* Post Grid Setting */
+
+        .post-li,
+        .post-grid.post-grid-2 > .post-li,
+        .post-grid.post-grid-3 > .post-li,
+        .post-grid.post-grid-4 > .post-li {
+            width: 100%;
+        }
+    }
+* ------------------------------- 5.0 About Us Setting ------------------------------- */
+/* 5.1 About Us Author Setting */
+.about-author {
+    position: relative;
+}
+
+.about-author .quote {
+    position: relative;
+    padding: 30px 60px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+    .about-author .quote:before {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 95px;
+        border: 10px solid transparent;
+        border-top-color: #f0f3f4;
+        border-left-color: #f0f3f4;
+    }
+
+    .about-author .quote h3 {
+        margin: 0;
+        font-weight: 300;
+        color: #707478;
+        font-style: italic;
+        line-height: 30px;
+    }
+
+.about-author .fa.fa-quote-left,
+.about-author .fa.fa-quote-right {
+    font-size: 28px;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    margin-top: -14px;
+    line-height: 28px;
+    top: 30px;
+    color: #D5D9DA;
+}
+
+.about-author .fa.fa-quote-right {
+    left: auto;
+    right: 30px;
+    bottom: 30px;
+    margin-top: 0;
+    margin-bottom: -14px;
+    top: auto;
+}
+
+.about-author .author {
+    position: relative;
+    text-align: right;
+    padding-left: 100px;
+    margin-bottom: 15px;
+}
+
+    .about-author .author .image {
+        position: absolute;
+        left: -10px;
+        top: -40px;
+        background: #fff;
+        border: 5px solid #fff;
+        border-radius: 50%;
+        width: 100px;
+        overflow: hidden;
+    }
+
+        .about-author .author .image img {
+            max-width: 100%;
+        }
+
+    .about-author .author .info {
+        color: #242a30;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+        .about-author .author .info small {
+            display: block;
+            color: #999;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .about-author .author .info a {
+            font-weight: normal;
+            font-size: 12px;
+            display: block;
+        }
+
+
+/* 5.2 About Us Skills Setting */
+
+.skills .skills-name {
+    font-size: 12px;
+    color: #242a30;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+
+/* 5.3 About Us Milestone Setting */
+
+.milestone {
+    text-align: center;
+}
+
+.milestone-col + .milestone-col {
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+.milestone .number {
+    font-size: 42px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.milestone .title {
+    color: #8F8E8E;
+}
+
+/* -------------------------------
+   7.0 Quote Setting
+------------------------------- */
+
+/* 7.1 Quote Element Setting */
+
+.quote {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+    color: #fff;
+}
+
+    .quote .fa-quote-left,
+    .quote .fa-quote-right {
+        color: #fff;
+        font-size: 20px;
+        position: relative;
+        top: -14px;
+    }
+
+    .quote small {
+        display: block;
+        font-size: 14px;
+        color: rgba(255,255,255,0.75);
+        margin-top: 20px;
+    }
+/* -------------------------------
+   3.0 Content Setting
+------------------------------- */
+
+/* 3.1 General Content Setting */
+
+.content {
+    padding: 60px 15px 75px;
+}
+
+    .content .content-title-about {
+        text-align: center;
+        position: relative;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        margin-top: 0;
+    }
+
+        .content .content-title-about:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 40px;
+            background: #242a30;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            margin-left: -20px;
+        }
+
+    .content .content-desc {
+        text-align: center;
+        margin-bottom: 60px;
+        color: #242a30;
+    }
+
+    .content.has-bg {
+        padding-bottom: 60px;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .content.has-bg .content-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+            .content.has-bg .content-bg img {
+                max-width: 100%;
+            }
+
+        .content.has-bg .content-title-about:after {
+            background: #fff;
+        }
+
+        .content.has-bg .content-bg:before {
+            content: '';
+            background: url(../../images/bg/bg-content-cover.png);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .content.has-bg .container {
+            position: relative;
+        }
+
+            .content.has-bg .container .content-title-about {
+                color: #fff;
+            }
+
+            .content.has-bg .container .content-desc {
+                color: rgba(255,255,255,0.6);
+            }
+
+        .content.has-bg h1,
+        .content.has-bg h2,
+        .content.has-bg h3,
+        .content.has-bg h4,
+        .content.has-bg h5,
+        .content.has-bg h6 {
+            color: #fff;
+        }
+
+
+/* -------------------------------
+   11.0 Testimonial Setting
+------------------------------- */
+
+/* 11.1 Testimonial Element Setting */
+
+.testimonials {
+    padding-bottom: 50px;
+}
+
+    .testimonials .item {
+        padding-top: 15px;
+    }
+
+    .testimonials .carousel-indicators {
+        bottom: 0;
+    }
+    .testimonials .carousel-inner-test {
+        max-height: 150px;
+    }
+    .testimonials blockquote {
+        border: none;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        font-weight: 300;
+        margin-bottom: 15px;
+        padding: 10px 20px;
+        font-size: 17.5px;
+    }
+
+        .testimonials blockquote .fa-quote-left,
+        .testimonials blockquote .fa-quote-right {
+            font-size: 28px;
+            position: absolute;
+            margin-left: 15px;
+            margin-top: 15px;
+            color: #8F8E8E;
+        }
+
+        .testimonials blockquote .fa-quote-left {
+            margin-left: -43px;
+            margin-top: -15px;
+        }
+
+    .testimonials .name {
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+        .testimonials .name span {
+            margin-left: 5px;
+        }
+
+    .testimonials .carousel-indicators li {
+        background: rgba(255,255,255,0.4);
+        border: none;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        transition: all .2s linear;
+    }
+
+        .testimonials .carousel-indicators li:hover,
+        .testimonials .carousel-indicators li:focus {
+            background: rgba(255,255,255,0.7);
+        }
+
+        .testimonials .carousel-indicators li.active {
+            background: #fff;
+        }
+
+
+
+
+
+
+
+
+
+
+/* 3.2 Section Title & Container Setting */
+
+.section-title-blog {
+    font-size: 14px;
+    text-align: left;
+    margin: 0 0 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    color: #333;
+    text-align: center;
+}
+
+    .section-title-blog span {
+        position: relative;
+        z-index: 1020;
+        background: #fff;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .section-title-blog:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        top: 0;
+        background: #222;
+        top: 50%;
+        margin-top: -1px;
+        z-index: 0;
+    }
+
+.section-container {
+    margin-bottom: 5px;
+}
+
+/* -------------------------------
+   5.0 Sidebar Setting
+------------------------------- */
+
+/* 5.1 Sidebar Social List Setting */
+
+.sidebar-social-list {
+    line-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+    .sidebar-social-list > li {
+        display: inline;
+        font-size: 18px;
+        float: left;
+    }
+
+        .sidebar-social-list > li a {
+            color: #333;
+            padding: 0 10px;
+        }
+
+            .sidebar-social-list > li a:hover,
+            .sidebar-social-list > li a:focus {
+                color: #00acac;
+            }
+
+
+/* 5.2 Sidebar Recent Post Setting */
+
+.sidebar-recent-post {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .sidebar-recent-post > li:before,
+    .sidebar-recent-post > li:after {
+        content: '';
+        display: table;
+        clear: boths;
+    }
+
+    .sidebar-recent-post > li {
+        padding: 10px 0;
+    }
+
+        .sidebar-recent-post > li + li {
+            border-top: 1px solid #ddd;
+        }
+
+        .sidebar-recent-post > li .title {
+            margin: 0;
+            font-size: 13px;
+            text-transform: initial;
+            letter-spacing: 0;
+            line-height: 20px;
+        }
+
+            .sidebar-recent-post > li .title a {
+                color: #333;
+            }
+
+        .sidebar-recent-post > li .date {
+            font-size: 11px;
+            color: #999;
+        }
+
+
+/* 5.3 Sidebar List Setting */
+
+.sidebar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+    .sidebar-list > li > a {
+        line-height: 20px;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+        display: block;
+        padding: 10px 0;
+    }
+
+
+/* -------------------------------
+   8.0 Service Setting
+------------------------------- */
+
+/* 8.1 Service Element Setting */
+
+.service {
+    margin-bottom: 30px;
+}
+
+    .service .icon {
+        float: left;
+        width: 50px;
+        height: 50px;
+        background: #242a30;
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        font-size: 18px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+    }
+
+    .service .title {
+        margin-bottom: 5px;
+    }
+
+    .service .icon + .info {
+        margin-left: 70px;
+    }
+
+    .service.service-vertical {
+        text-align: center;
+    }
+
+        .service.service-vertical .icon {
+            float: none;
+            margin: 0 auto 15px;
+        }
+
+        .service.service-vertical .info {
+            margin: 0;
+        }
+
+        .loginheader{
+            float:right;
+            position:relative;
+            list-style:none;
+            display:block;
+        }

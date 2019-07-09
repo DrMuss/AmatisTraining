@@ -5,87 +5,81 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Log in | Amatis Training";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-
-<h2>@ViewData["Title"].</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section>
-            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Email" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <label asp-for="RememberMe">
-                                <input asp-for="RememberMe" />
-                                @Html.DisplayNameFor(m => m.RememberMe)
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-default">Log in</button>
-                    </div>
-                </div>
-                <p>
-                    <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                </p>
-                <p>
-                    <a asp-action="ForgotPassword">Forgot your password?</a>
-                </p>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section>
-            <h4>Use another service to log in.</h4>
-            <hr />
-            @{
-                var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
-                if (loginProviders.Count == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in loginProviders)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
+@section title
+{
+    <title>@ViewData["Title"]</title>
+}
+<div class="login-cover">
+    <div class="login-cover-image" 
+         style="background-image: url(../../images/bg/login-bg-7.jpg)" data-id="login-cover-image"></div>
+    <div class="login-cover-bg"></div>
 </div>
+	<!-- begin #page-container -->
+<div id="page-container" class="fade">
+    <!-- begin login -->
+    <div class="login login-v2" data-pageload-addclass="animated fadeIn">
+        <!-- begin brand -->
+        <div class="login-header">
+            <div class="brand">
+                <img class="img-fluid" src="~/images/logo/Amatis_Logo_Primary_White_RGB.png" />
+            </div>
+            <div class="icon">
+                <i class="fa fa-lock"></i>
+            </div>
+        </div>
+        <!-- end brand -->
+        <!-- begin login-content -->
+        <div class="login-content">
+            <form asp-controller="Account" 
+                  asp-action="Login" 
+                  asp-route-returnurl="@ViewData["ReturnUrl"]" 
+                  method="post" class="margin-bottom-0">
+               
+                    <div class="form-group m-b-20">
+                        <input asp-for="Email" type="text" 
+                               class="form-control form-control-lg" 
+                               placeholder="Email Address" required/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+               
+                    </div>
+                    <div class="form-group m-b-20">
+                        <input asp-for="Password" type="password" class="form-control  form-control-lg" placeholder="Password" required />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                    </div>
+                    <div class="checkbox checkbox-css m-b-20">
+                        <input type="checkbox" asp-for="RememberMe" id="remember_checkbox" />
+                        <label asp-for="RememberMe">
+                           @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+
+                
+                    <div class="login-buttons">
+                        <button type="submit" 
+                                class="btn btn-success btn-block btn-lg">Sign me in</button>
+                    </div>
+                    <div class="m-t-20">
+                        Not a member yet? Click <a asp-action="Register" asp-controller="Account">here</a> to register.
+                    </div>
+                <div class="m-t-20">
+                    <a asp-action="ForgotPassword">Forgot your password?</a>
+                </div>
+                </form>
+</div>
+        <!-- end login-content -->
+    </div>
+    <!-- end login -->
+
+   
+
+ 
+</div>
+<!-- end page container -->
+
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

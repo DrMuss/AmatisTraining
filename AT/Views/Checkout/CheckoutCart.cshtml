@@ -1,0 +1,162 @@
+@model AT.Models.CheckoutViewModels.CheckoutVM
+@using AT.Data.Courses
+
+@{
+    ViewData["Title"] = "CheckoutCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-container" id="checkout-cart">
+    <!-- BEGIN container -->
+    <div class="container">
+        <!-- BEGIN checkout -->
+        <div class="checkout">
+            <form asp-action="CheckoutUserInfo" 
+                  asp-controller="Checkout"
+                  method="POST" 
+                  name="form_checkout">
+                <!-- BEGIN checkout-header -->
+                <div class="checkout-header">
+                    <!-- BEGIN row -->
+                    <div class="row">
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step active">
+                                <a href="#">
+                                    <div class="number">1</div>
+                                    <div class="info">
+                                        <div class="title">Courses</div>
+                                        <div class="desc">Your order details</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">2</div>
+                                    <div class="info">
+                                        <div class="title">Personal Details</div>
+                                        <div class="desc">Your details.</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">3</div>
+                                    <div class="info">
+                                        <div class="title">Payment</div>
+                                        <div class="desc">Your Card Details </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">4</div>
+                                    <div class="info">
+                                        <div class="title">Complete Payment</div>
+                                        <div class="desc">Confirmation</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                    </div>
+                    <!-- END row -->
+                </div>
+                <!-- END checkout-header -->
+                <!-- BEGIN checkout-body -->
+                <div class="checkout-body">
+                    <div class="table-responsive">
+                        <table class="table table-cart">
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                    @foreach(CartLine line in Model.Cart.CartLines)
+                                    {
+    <tr>
+        <td class="cart-product">
+            <div class="product-img">
+                <img src="../../uploads/courses/@line.Product.ImageFileName" alt="" />
+            </div>
+            <div class="product-info">
+                <div class="title">@line.Product.Name</div>
+                <div class="desc">Instant Access</div>
+            </div>
+        </td>
+        <td class="cart-price text-center">&pound;@line.Product.Price.ToString("#.00")</td>
+        <td class="cart-qty text-center">
+            <div class="cart-qty-input">
+                <a asp-controller="Cart" 
+                   asp-action="RemoveOneItem"
+                   asp-route-productid="@line.Product.Id"
+                   class="qty-control left disabled" data-click="decrease-qty" data-target="#qty"><i class="fa fa-minus"></i></a>
+                <input type="text" name="qty" value="1" class="form-control" id="qty" />
+                <a asp-controller="Cart" 
+                   asp-action="AddToCart"
+                   asp-route-productid="@line.Product.Id"
+                   class="qty-control right disabled" data-click="increase-qty" data-target="#qty"><i class="fa fa-plus"></i></a>
+            </div>
+            
+        </td>
+        <td class="cart-total text-center">
+            &pound;@line.Product.Price.ToString("#.00")
+        </td>
+    </tr>
+    }
+                                <tr>
+                                    <td class="cart-summary" colspan="4">
+                                        <div class="summary-container">
+                                            <div class="summary-row">
+                                                <div class="field">Cart Subtotal</div>
+                                                <div class="value">&pound;@Model.Cart.Subtotal.ToString("#.00")</div>
+                                            </div>
+                                            <div class="summary-row">
+                                                <div class="field">VAT</div>
+                                                <div class="value">&pound;@Model.Cart.VAT.ToString("#.00")</div>
+                                            </div>
+                                            
+                                            <div class="summary-row total">
+                                                <div class="field">Total</div>
+                                                <div class="value">&pound;@Model.Cart.Total.ToString("#.00")</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END checkout-body -->
+                <!-- BEGIN checkout-footer -->
+                <div class="checkout-footer">
+                    <a asp-controller="Home" asp-action="Index" 
+                       class="btn btn-white btn-lg pull-left">Continue Shopping</a>
+                    <button type="submit" 
+                            class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10">Checkout</button>
+                </div>
+                <!-- END checkout-footer -->
+            </form>
+        </div>
+        <!-- END checkout -->
+    </div>
+    <!-- END container -->
+</div>
+

@@ -1,0 +1,260 @@
+@model AT.Models.CheckoutViewModels.CheckoutVM
+@{
+    ViewData["Title"] = "CheckoutPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-container" id="checkout-cart">
+    <!-- BEGIN container -->
+    <div class="container">
+        <!-- BEGIN checkout -->
+        <div class="checkout">
+
+            <form asp-action="CheckoutConfirmation"
+                  id="form-checkout"
+                  name="form_checkout">
+
+                <!-- BEGIN checkout-header -->
+                <div class="checkout-header">
+                    <!-- BEGIN row -->
+                    <div class="row">
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step ">
+                                <a href="#">
+                                    <div class="number">1</div>
+                                    <div class="info">
+                                        <div class="title">Courses</div>
+                                        <div class="desc">Your order details</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">2</div>
+                                    <div class="info">
+                                        <div class="title">Personal Details</div>
+                                        <div class="desc">Your details.</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step active">
+                                <a href="">
+                                    <div class="number">3</div>
+                                    <div class="info">
+                                        <div class="title">Payment</div>
+                                        <div class="desc">Your Card Details </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">4</div>
+                                    <div class="info">
+                                        <div class="title">Complete Payment</div>
+                                        <div class="desc">Confirmation</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                    </div>
+                    <!-- END row -->
+                </div>
+                <!-- END checkout-header -->
+
+                <div class="checkout-body d-flex justify-content-center">
+               
+                        <div class="col-8">
+
+                        <div class="row m-b-20">
+                            <div class="col-12">
+                                <label class="control-label">Name <span class="text-danger">*</span></label>
+                                <input class="form-control" id="cardholder-name" type="text">
+                            </div>
+                            </div>
+                        <div class="row m-b-20">
+                            <div class="col-12">
+                                <label class="control-label" for="card-number" data-tid="form.card_number_label">Card number</label>
+                                <div id="card-number" class="form-control"></div>
+                                <div class="baseline"></div>
+                            </div>
+                        </div>
+                        <div class="row m-b-20">
+                            <div class="col-6 m-b-20">
+                                <label class="control-label" for="card-expiry" data-tid="form.card_number_label">Expiration</label>
+                                <div id="card-expiry" class="form-control"></div>
+
+                                <div class="baseline"></div>
+                            </div>
+                            <div class="col-6 m-b-20">
+                                <label class="control-label" for="card-cvc" data-tid="form.card_cvc_label">CVC</label>
+                                <div id="card-cvc" class="form-control"></div>
+
+                                <div class="baseline"></div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- placeholder for Elements
+                        <div id="card-element"></div>-->
+                    </div>
+                
+        </div>
+        <div class="checkout-footer">
+
+            <button id="card-button"
+                    type="button"
+                    class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10"
+                    data-secret="@Model.Cart.ClientSecret">
+                Pay Now
+            </button>
+        </div>
+
+
+        </form>
+
+    </div>
+        <!-- END checkout -->
+    </div>
+    <!-- END container -->
+</div>
+
+@section scripts
+{
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        var stripe = Stripe('@Model.PublishableKey');
+
+        var elements = stripe.elements({
+            fonts: [
+                {
+                    cssSrc: 'https://fonts.googleapis.com/css?family=Source+Code+Pro',
+                },
+            ],
+            // Stripe's examples are localized to specific languages, but if
+            // you wish to have Elements automatically detect your user's locale,
+            // use `locale: 'auto'` instead.
+            locale: 'auto'
+        });
+
+        var elementStyles = {
+            base: {
+                color: '#32325D',
+                fontWeight: 500,
+                fontFamily: 'Source Code Pro, Consolas, Menlo, monospace',
+                fontSize: '16px',
+                fontSmoothing: 'antialiased',
+
+                '::placeholder': {
+                    color: '#CFD7DF',
+                },
+                ':-webkit-autofill': {
+                    color: '#e39f48',
+                },
+            },
+            invalid: {
+                color: '#E25950',
+
+                '::placeholder': {
+                    color: '#FFCCA5',
+                },
+            },
+        };
+
+        var elementClasses = {
+            focus: 'focused',
+            empty: 'empty',
+            invalid: 'invalid',
+        };
+
+
+
+        //var cardElement = elements.create('card');
+        //cardElement.mount('#card-element');
+        var cardNumber = elements.create('cardNumber', {
+            style: elementStyles,
+            classes: elementClasses,
+        });
+        cardNumber.mount('#card-number');
+
+        var cardExpiry = elements.create('cardExpiry', {
+            style: elementStyles,
+            classes: elementClasses,
+        });
+        cardExpiry.mount('#card-expiry');
+
+        var cardCvc = elements.create('cardCvc', {
+            style: elementStyles,
+            classes: elementClasses,
+        });
+        cardCvc.mount('#card-cvc');
+
+        // Floating labels
+        var inputs = document.querySelectorAll('.cell .input');
+        Array.prototype.forEach.call(inputs, function (input) {
+            input.addEventListener('focus', function () {
+                input.classList.add('focused');
+            });
+            input.addEventListener('blur', function () {
+                input.classList.remove('focused');
+            });
+            input.addEventListener('keyup', function () {
+                if (input.value.length === 0) {
+                    input.classList.add('empty');
+                } else {
+                    input.classList.remove('empty');
+                }
+            });
+        });
+
+       // registerElements([cardNumber, cardExpiry, cardCvc], 'example2');
+
+
+
+        var cardholderName = document.getElementById('cardholder-name');
+        var cardButton = document.getElementById('card-button');
+        var clientSecret = cardButton.dataset.secret;
+
+        cardButton.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            stripe.handleCardPayment(
+                clientSecret, cardNumber, {
+                    payment_method_data: {
+                        billing_details: { name: cardholderName.value }
+                    }
+                }
+            ).then(function (result) {
+                if (result.error) {
+                    // Display error.message in your UI.
+                    alert('Error in submitting payment:' + result.error.value);
+                } else {
+                    // The payment has succeeded. Display a success message.
+                   
+                    var form = document.getElementById("form-checkout");
+                    form.submit();
+                 }
+            });
+        });
+
+
+    </script>
+
+}
+
+
+

@@ -1,8 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Access Denied";
+    ViewData["Title"] = "Access Denied  | Amatis Training";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section title
+{
+    <title>@ViewData["Title"]</title>
 }
 
-<header>
-    <h1 class="text-danger">Access Denied.</h1>
-    <p class="text-danger">You do not have access to this resource.</p>
-</header>
+<div class="login-cover">
+    <div class="login-cover-image"
+         style="background-image: url(../../images/bg/login-bg-1.jpg)" data-id="login-cover-image"></div>
+    <div class="login-cover-bg"></div>
+</div>
+<!-- begin #page-container -->
+<div id="page-container" class="fade">
+    <!-- begin login -->
+    <div class="login login-v2" data-pageload-addclass="animated fadeIn">
+        <!-- begin brand -->
+        <div class="login-header">
+            <div class="brand">
+                <img class="img-fluid" src="~/images/logo/Amatis_Logo_Primary_White_RGB.png" />
+            </div>
+            <div class="icon">
+                <i class="fa fa-lock"></i>
+            </div>
+        </div>
+        <!-- end brand -->
+        <!-- begin login-content -->
+       <h1>Access Denied</h1>
+        <p class="text-danger">You do not have access to this resource.</p>
+        <!-- end login-content -->
+    </div>
+    <!-- end login -->
+
+
+
+
+</div>
+<!-- end page container -->

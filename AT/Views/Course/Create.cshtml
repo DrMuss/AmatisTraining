@@ -1,0 +1,163 @@
+@model AT.Models.CourseViewModels.CourseVM
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<div id="content" class="content">
+    <h1 class="page-header">
+        Create a New Course <small>
+            <a asp-controller="Course"
+               asp-action="Index"
+               class="btn btn-lg btn-success">Back to List</a>
+        </small>
+    </h1>
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+        <div class="panel-heading">
+            <h4 class="panel-title">Create a New Course</h4>
+        </div>
+        <div class="panel-body">
+            @if (Model.ShowSuccessToast)
+            {
+                <div class="alert alert-success">
+                    The Course created successfully.
+                </div>
+
+            }
+
+            <form asp-action="Create" 
+                  asp-controller="Course"
+                  enctype="multipart/form-data">
+                <div class="form-horizontal">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row m-b-15">
+                        <label asp-for="Course.Name" class="col-form-label col-md-3"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Course.Name" class="form-control" />
+                            <span asp-validation-for="Course.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row m-b-15">
+                        <label asp-for="Course.Price" class="col-form-label col-md-3"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Course.Price" class="form-control" />
+                            <span asp-validation-for="Course.Price" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row m-b-15">
+                        <label class="col-form-label col-md-3">Warranty LHS</label>
+                        <div class="col-md-9">
+                            <input asp-for="Course.WarrantyLeft" class="form-control" />
+                            <span asp-validation-for="Course.WarrantyLeft" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row m-b-15">
+                        <label class="col-form-label col-md-3">Warranty RHS</label>
+                        <div class="col-md-9">
+                            <input asp-for="Course.WarrantyRight" class="form-control" />
+                            <span asp-validation-for="Course.WarrantyRight" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row m-b-15">
+                        <label class="col-form-label col-md-3">Course Info Bullets</label>
+                        
+                        
+                        <div class="col-md-9">
+                            <ul id="dynamic-list"></ul>
+                            <input type="text" id="candidate" />
+                            <button type="button" class="btn btn-success" onclick="addItem()">Add Info</button>
+                            <button type="button" class="btn btn-danger" onclick="removeItem()">Remove Info</button>
+                            <input id="infoBinder" type="hidden" asp-for="Info"/>
+                        </div>
+                       </div>
+
+
+                    <div class="form-group row m-b-15">
+
+
+                        <label class="col-form-label col-md-3">Image Upload</label>
+
+                        <div class="col-md-9">
+                            <div class="input-group-btn">
+                                <input class="form-control m-b-5" id="flPhoto" name="upload" type="file">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row m-b-15">
+                        <label asp-for="Course.ShortDescription" class="col-form-label col-md-3"></label>
+                        <div class="col-md-9">
+                            <textarea asp-for="Course.ShortDescription" class="form-control m-b-5" rows="3" placeholder="Very short abstract that displays in the main blog grid"></textarea>
+                            <small class="f-s-12 text-danger"><span asp-validation-for="Course.ShortDescription" class="text-danger"></span></small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row m-b-15">
+                        <label asp-for="Course.Description" class="col-form-label col-md-3"></label>
+                        <div class="col-md-12">
+
+                            <textarea asp-for="Course.Description" class="ckeditor form-control m-b-5" rows="20">This is the main course description</textarea>
+                            <small class="f-s-12 text-danger"><span asp-validation-for="Course.Description" class="text-danger"></span></small>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row m-b-15">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    </div>
+
+
+    @section Scripts {
+       
+
+        <script src="~/lib/ckeditor/ckeditor.js"></script>
+        <script>
+            function addItem() {
+                var ul = document.getElementById("dynamic-list");
+                var candidate = document.getElementById("candidate");
+                var li = document.createElement("li");
+                li.setAttribute('id', candidate.value);
+
+                if (candidate.value.length > 0)
+                {
+                    
+                    
+                    li.appendChild(document.createTextNode("<i class='fa fa-circle'></i>" + candidate.value));
+                    ul.appendChild(li);
+                    var binder = document.getElementById("infoBinder");
+                    binder.value = ul.innerHTML;
+
+                }
+               
+                //set the textbox back to clear
+                candidate.value = "";
+            }
+
+            function removeItem() {
+                var ul = document.getElementById("dynamic-list");
+                var candidate = document.getElementById("candidate");
+                var item = document.getElementById(candidate.value);
+                ul.removeChild(item);
+                var binder = document.getElementById("infoBinder");
+                binder.value = ul.innerHTML;
+            }
+
+        </script>
+
+    }
+
+

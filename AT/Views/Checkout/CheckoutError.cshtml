@@ -1,0 +1,87 @@
+﻿@model AT.Models.CheckoutViewModels.CheckoutErrorVM
+
+@{
+    ViewData["Title"] = "CheckoutCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section-container" id="checkout-cart">
+    <!-- BEGIN container -->
+    <div class="container">
+        <!-- BEGIN checkout -->
+        <div class="checkout">
+            <!-- BEGIN checkout-header -->
+            <div class="checkout-header">
+                <!-- BEGIN row -->
+                <div class="row">
+                    <!-- BEGIN col-3 -->
+                    <div class="col-md-3 col-sm-3">
+                        <div class="step">
+                            <a href="#">
+                                <div class="number">1</div>
+                                <div class="info">
+                                    <div class="title">Courses</div>
+                                    <div class="desc">Your order details</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END col-3 -->
+                    <!-- BEGIN col-3 -->
+                    <div class="col-md-3 col-sm-3">
+                        <div class="step">
+                            <a href="">
+                                <div class="number">2</div>
+                                <div class="info">
+                                    <div class="title">Personal Details</div>
+                                    <div class="desc">Your details.</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END col-3 -->
+                    <!-- BEGIN col-3 -->
+                    <div class="col-md-3 col-sm-3">
+                        <div class="step">
+                            <a href="">
+                                <div class="number">3</div>
+                                <div class="info">
+                                    <div class="title">Payment</div>
+                                    <div class="desc">Your Card Details </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END col-3 -->
+                    <!-- BEGIN col-3 -->
+                    <div class="col-md-3 col-sm-3">
+                        <div class="step active">
+                            <a href="">
+                                <div class="number">4</div>
+                                <div class="info">
+                                    <div class="title">Complete Payment</div>
+                                    <div class="desc">Confirmation</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END col-3 -->
+                </div>
+                <!-- END row -->
+            </div>
+            <!-- END checkout-header -->
+            <div class="checkout-body">
+                <h3>@Model.ErrorMessage</h3>
+
+                <p class="text-muted text-center m-b-0">Should you require any assistance, you can get in touch with Support Team at +44 (0) 7712 304 355</p>
+            </div>
+            <div class="checkout-footer">
+
+
+            </div>
+            
+
+        </div>
+        <!-- END checkout -->
+    </div>
+    <!-- END container -->
+</div>

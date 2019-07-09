@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AT.Data.Courses.Course>
+@using AT.Data.Courses
+
+<div class="container" data-animation="true" data-animation-type="fadeInDown">
+    <h2 class="content-title-about">Our Courses</h2>
+    <p class="content-desc">
+
+        Amatis is a BCS accredited business analysis training provider. The courses enable you to gain the BCS International Diploma in Business Analysis
+        and are written as interactive modules, which you can approach in any order. The flexible course structure has knowledge checks throughout. Importantly, the same case study runs throughout each course – enabling you to get up-to-speed very quickly.
+    </p>
+
+
+    <!-- begin post-list -->
+
+
+
+    <div class="post-list post-grid post-grid-2">
+
+        @foreach (Course crs in Model)
+        {
+            <div class="post-li">
+                <!-- begin post-content -->
+                <div class="post-content">
+                    <!-- begin post-image -->
+                    <div class="post-image">
+                        <a asp-controller="Course"
+                           asp-action="Course"
+                           asp-route-id="@crs.Id"
+                           asp-route-slug="@crs.Slug">
+
+                            <div class="post-image-cover" style="background-image: url(../../uploads/courses/@crs.ImageFileName)"></div>
+                        </a>
+                    </div>
+                    <!-- end post-image -->
+                    <!-- begin post-info -->
+                    <div class="post-info">
+                        <h4 class="post-title">
+                            <a asp-controller="Course"
+                               asp-action="Course"
+                               asp-route-id="@crs.Id"
+                               asp-route-slug="@crs.Slug">@crs.Name</a>
+                        </h4>
+                            @crs.ShortDescription
+                            @*Amatis Training can arrange BCS examinations at a Pearson Vue centre of your choice.*@
+                        </div>
+                       
+                    </div>
+                    <!-- end post-info -->
+                </div>
+                <!-- end post-content -->
+            
+
+        }
+      
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- end post-list -->
+
+
+</div>

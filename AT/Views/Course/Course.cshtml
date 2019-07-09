@@ -1,0 +1,222 @@
+﻿@model AT.Data.Courses.Course
+@{
+    ViewData["Title"] = "Course Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="page-container" class="fade">
+
+    <div id="page-header" class="section-container page-header-container bg-black">
+        <!-- BEGIN page-header-cover -->
+        <div class="page-header-cover">
+            <img src="~/images/cover/cover-10.jpg" />
+        </div>
+        <!-- END page-header-cover -->
+        <!-- BEGIN container -->
+        <div class="container">
+            <h1 class="page-header">Business Analysis Practice <b> Course</b></h1>
+        </div>
+        <!-- END container -->
+    </div>
+</div>
+
+<div id="product" class="section-container p-t-20">
+    <div class="container">
+
+
+        <div class="product">
+            <div class="product-detail">
+
+                <div class="product-image">
+
+                    <!-- BEGIN product-main-image -->
+                    <div class="product-main-image" data-id="main-image">
+                        <img src="@Model.ImageUrl" alt="@Model.Name" />
+                    </div>
+                    <!-- END product-main-image -->
+                </div>
+
+                <div class="product-info">
+                    <!-- BEGIN product-info-header -->
+                    <div class="product-info-header">
+                        <h1 class="product-title">@Model.Name </h1>
+
+                    </div>
+                    <!-- END product-info-header -->
+                    <!-- BEGIN product-warranty -->
+                    <div class="product-warranty">
+                        <div class="pull-right">@Model.WarrantyRight</div>
+                        <div>@Model.WarrantyLeft</div>
+                    </div>
+                    <!-- END product-warranty -->
+                    <!-- BEGIN product-info-list -->
+                    <ul class="product-info-list">
+                        @Html.Raw(Model.Bullets)
+                
+                    </ul>
+                    <!-- END product-info-list -->
+                    <!-- BEGIN product-purchase-container -->
+                    <div class="product-purchase-container">
+
+                        <div class="product-price">
+                            <div class="price">£@Model.Price <text>plus VAT</text></div>
+                        </div>
+                        <a asp-controller="Cart"
+                           asp-action="AddToCart"
+                           asp-route-productId="@Model.Id"
+                           asp-route-returnurl="@ViewData["ReturnUrl"]"
+                           class="btn btn-inverse btn-lg"
+                           >ADD TO CART</a>
+                    </div>
+                    <!-- END product-purchase-container -->
+                </div>
+
+            </div>
+
+            <!-- BEGIN product-tab -->
+            <div class="product-tab">
+                <!-- BEGIN #product-tab -->
+                <ul id="product-tab" class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" href="#product-desc" data-toggle="tab">Product Description</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#product-reviews" data-toggle="tab">Rating & Reviews (5)</a></li>
+                </ul>
+                <!-- END #product-tab -->
+                <!-- BEGIN #product-tab-content -->
+                <div id="product-tab-content" class="tab-content">
+                    <!-- BEGIN #product-desc -->
+                    <div class="tab-pane fade active show" id="product-desc">
+                        <!-- BEGIN product-desc -->
+                        <div class="product-desc">
+                            <div class="image">
+                                <img src="@Model.ImageUrl" alt="" />
+                            </div>
+                            <div class="desc">
+                               <p>@Html.Raw(Model.Description)</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- END #product-desc -->
+                    <!-- BEGIN #product-reviews -->
+                    <div class="tab-pane fade" id="product-reviews">
+                        <!-- BEGIN row -->
+                        <div class="row row-space-30">
+                            <!-- BEGIN col-7 -->
+                            <div class="col-md-7">
+                                <!-- BEGIN review -->
+                                <p>Do we want to put in reviews or course testimonials here</p>
+                                <div class="review">
+                                    <div class="review-info">
+                                        <div class="review-icon"><img src="~/images/user/user-1.jpg" alt="" /></div>
+                                        <div class="review-rate">
+                                            <ul class="review-star">
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class=""><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                                            (4/5)
+                                        </div>
+                                        <div class="review-name">Terry</div>
+                                        <div class="review-date">24/05/2016 7:40am</div>
+                                    </div>
+                                    <div class="review-title">
+                                        What does “SIM-free” mean?
+                                    </div>
+                                    <div class="review-message">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in imperdiet augue. Integer non aliquam eros. Cras vehicula nec sapien pretium sagittis. Pellentesque feugiat lectus non malesuada aliquam. Etiam id tortor pretium, dictum leo at, malesuada tortor.
+                                    </div>
+                                </div>
+                                <!-- END review -->
+                                <!-- BEGIN review -->
+                                <div class="review">
+                                    <div class="review-info">
+                                        <div class="review-icon"><img src="~/images/user/user-2.jpg" alt="" /></div>
+                                        <div class="review-rate">
+                                            <ul class="review-star">
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class=""><i class="fa fa-star-o"></i></li>
+                                                <li class=""><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                                            (3/5)
+                                        </div>
+                                        <div class="review-name">George</div>
+                                        <div class="review-date">24/05/2016 8:40am</div>
+                                    </div>
+                                    <div class="review-title">
+                                        When I buy iPhone from apple.com, is it tied to a carrier or does it come “unlocked”?
+                                    </div>
+                                    <div class="review-message">
+                                        In mauris leo, maximus at pellentesque vel, pharetra vel risus. Aenean in semper velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi volutpat mattis neque, at molestie tellus ultricies quis. Ut lobortis odio nec nunc ullamcorper, vitae faucibus augue semper. Sed luctus lobortis nulla ac volutpat. Mauris blandit scelerisque sem.
+                                    </div>
+                                </div>
+                                <!-- END review -->
+
+                            </div>
+                            <!-- END col-7 -->
+                            <!-- BEGIN col-5 -->
+                            <div class="col-md-5">
+                                <!-- BEGIN review-form -->
+                                <div class="review-form">
+                                    <form action="product_detail.html" name="review_form" method="POST">
+                                        <h2>Write a review</h2>
+                                        <div class="form-group">
+                                            <label for="name">Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Title <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="review">Review <span class="text-danger">*</span></label>
+                                            <textarea class="form-control" rows="8" id="review"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Rating  <span class="text-danger">*</span></label>
+                                            <div class="rating rating-selection" data-rating="true" data-target="rating">
+                                                <i class="fa fa-star-o" data-value="2"></i>
+                                                <i class="fa fa-star-o" data-value="4"></i>
+                                                <i class="fa fa-star-o" data-value="6"></i>
+                                                <i class="fa fa-star-o" data-value="8"></i>
+                                                <i class="fa fa-star-o" data-value="10"></i>
+                                                <span class="rating-comment">
+                                                    <span class="rating-comment-tooltip">Click to rate</span>
+                                                </span>
+                                            </div>
+                                            <select name="rating" class="hide">
+                                                <option value="2">2</option>
+                                                <option value="4">4</option>
+                                                <option value="6">6</option>
+                                                <option value="8">8</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-inverse btn-lg">Submit Review</button>
+                                    </form>
+                                </div>
+                                <!-- END review-form -->
+                            </div>
+                            <!-- END col-5 -->
+                        </div>
+                        <!-- END row -->
+                    </div>
+                    <!-- END #product-reviews -->
+                </div>
+                <!-- END #product-tab-content -->
+            </div>
+            <!-- END product-tab -->
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("body").addClass("bg-silver");
+        });
+    </script>
+}

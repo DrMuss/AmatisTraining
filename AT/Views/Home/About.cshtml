@@ -1,7 +1,113 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "About Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<div id="page-container" class="fade">
+    <div id="page-header" class="section-container page-header-container bg-black">
+        <!-- BEGIN page-header-cover -->
+        <div class="page-header-cover">
+            <img src="~/images/cover/cover-1.jpg" />
+        </div>
+        <!-- END page-header-cover -->
+        <!-- BEGIN container -->
+        <div class="container">
+            <h1 class="page-header">About <b>Us</b></h1>
+        </div>
+        <!-- END container -->
+    </div>
 
-<p>Use this area to provide additional information.</p>
+    <!-- begin #about -->
+    <div id="about" class="content" data-scrollview="true">
+        <!-- begin container -->
+        <div class="container" data-animation="true" data-animation-type="fadeInDown">
+          
+            <p class="content-desc">
+                Amatis Training is unique – we are the only organisation to offer professional business analysis training courses on a smartphone.
+
+                These courses are available to business analysts around the world in multiple languages. If you have an international team, this ensures that everyone receives the same comprehensive level of training. This then enables communication and collaboration across continents.
+            </p>
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-4 -->
+                <div class="col-md-8 col-sm-12">
+                    <!-- begin about -->
+                    <div class="about">
+                        <h3>Our Story</h3>
+                        <p>
+                            Amatis Training offers professional business analysis training courses at your convenience. Each course has a ‘mobile first’ design policy so you can access your course anytime, anywhere! It is a training programme, a reference model, an aide memoire.  Self-study is easier than ever. Use it on your daily commute, for ideas at work, for extra study while away – raising your standard of business analysis. Not only can you access your course on your mobile, you can pick-up where you left off on a tablet and PC too.
+                        </p>
+                        <p>Each course has been authored by an experienced practitioner with expert knowledge. You will find numerous practical hints and tips along the way. The authors of each course are members of a BCS expert panel and are BCS Business Analysis Oral Examiners. The training courses are designed to provide you with a complete set of skills to succeed as a Business Analyst.</p>
+                        <p>The courses are written as interactive modules, which you can approach in any order. The flexible course structure has knowledge checks throughout. Importantly, the same case study runs throughout each course – enabling you to get up-to-speed very quickly.</p>
+                        <p>
+                            You have the training materials in your pocket, so you can use it for reference at work, seeing how the models are used in practice, giving rise to using new additional tools and techniques. This has the effect of merging the gap between formal learning and work-based learning, maximising the ‘growth’ of your knowledge and experience.
+
+                        </p>
+                    </div>
+                    <!-- end about -->
+                </div>
+                <!-- end col-4 -->
+                <!-- begin col-4 -->
+                <!-- end col-4 -->
+                <!-- begin col-4 -->
+                <div class="col-md-4 col-sm-12">
+
+                    <h3>Our Philosophy</h3>
+                    <!-- begin about-author -->
+                    <div class="about-author">
+                        <div class="quote bg-silver">
+                            <i class="fa fa-quote-left"></i>
+                            <h3>Near Zero Carbon,<br /><span>Footprint</span></h3>
+                            <i class="fa fa-quote-right"></i>
+                        </div>
+                        <div class="author">
+                            <div class="image">
+                                <img src="~/images/user/user-1.jpg" />
+
+                            </div>
+                            <div class="info">
+                                Martin Maya
+                                <small>CEO</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end about-author -->
+
+
+                    <h3>Our Experience</h3>
+                    <!-- begin skills -->
+                    <div class="skills">
+                        <div class="skills-name">Business Analysis</div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-success" style="width: 95%">
+                                <span class="progress-number">95%</span>
+                            </div>
+                        </div>
+                        <div class="skills-name">Training</div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-success" style="width: 90%">
+                                <span class="progress-number">95%</span>
+                            </div>
+                        </div>
+                        <div class="skills-name">Mentoring</div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-success" style="width: 85%">
+                                <span class="progress-number">85%</span>
+                            </div>
+                        </div>
+                        <div class="skills-name">Exam Preparation</div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-success" style="width: 80%">
+                                <span class="progress-number">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end skills -->
+                </div>
+                <!-- end col-4 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #about -->
+</div>

@@ -1,0 +1,86 @@
+@model IPagedList<AT.Data.Blog.Article>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<div id="content" class="content">
+    <!-- begin page-header -->
+    <h1 class="page-header">Blog Articles <small><a class="btn btn-success"
+                                                    asp-controller="Blog"
+                                                    asp-action="Create">Create New</a></small></h1>
+    <!-- end page-header -->
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="table-basic-7">
+        <!-- begin panel-heading -->
+        <div class="panel-heading">
+            
+            <h4 class="panel-title">Blog Articles</h4>
+        </div>
+        <!-- end panel-heading -->
+        <!-- begin panel-body -->
+        <div class="panel-body">
+            <!-- begin table-responsive -->
+            <div class="table-responsive">
+                <table class="table table-striped m-b-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Posted On</th>
+                            <th>Is Published?</th>
+                            <th></th>
+                            <th width="1%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+@foreach (var item in Model)
+{
+    <tr>
+        <td class="with-img">
+            @if (item.Image != null && item.Image.Url != null)
+            {
+                <img src="@item.Image.Url" class="img-rounded height-30" />
+
+            }
+            else
+            {
+
+                <img src="~/images/logo/Amatis_Logo_Primary_Black_RGB small.png" class="img-rounded height-30" />
+            }
+           
+        </td>
+        <td>@item.Title</td>
+        <td>@item.Author</td>
+        <td>@item.PostedOn.Value.ToString("dd-MMM-yyyy")</td>
+        <td>@item.Published</td>
+        <td class="with-btn" nowrap>
+            <a asp-controller="Blog"
+               asp-action="Edit"
+               asp-route-id="@item.Id"
+               class="btn btn-sm btn-warning width-60 m-r-2">Edit</a>
+            <a asp-action="Delete"
+               asp-controller="Blog"
+               asp-route-id="@item.Id"
+               class="btn btn-sm btn-danger width-60">Delete</a>
+        </td>
+    </tr>
+}
+                       
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- end table-responsive -->
+        </div>
+        <!-- end panel-body -->
+      
+    </div>
+    <!-- end panel -->
+
+</div>
+
+  

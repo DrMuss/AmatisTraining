@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+   @RenderSection("title",false)
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="~/lib/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="~/css/apple/style.min.css" rel="stylesheet" />
+    <link href="~/css/apple/style-responsive.min.css" rel="stylesheet" />
+    <link href="~/css/apple/theme/lime.css" rel="stylesheet" id="theme" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+</head>
+<body class="pace-top bg-white">
+   @RenderBody()
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="~/lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="~/lib/crossbrowserjs/html5shiv.js"></script>
+        <script src="~/lib/crossbrowserjs/respond.min.js"></script>
+        <script src="~/lib/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/lib/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/lib/js-cookie/js.cookie.js"></script>
+    <script src="~/js/admin/apple.min.js"></script>
+    <script src="~/js/admin/apps.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+  
+    <script>
+		$(document).ready(function() {
+			App.init();
+			
+		});
+    </script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

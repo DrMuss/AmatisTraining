@@ -1,0 +1,79 @@
+@model AT.Models.FaqViewModels.FaqVM
+
+@{
+    ViewData["Title"] = "Create FAQ";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+
+<div id="content" class="content">
+    <h1 class="page-header">
+        Create a New FAQ <small>
+            <a asp-controller="Faq"
+               asp-action="Index"
+               class="btn btn-lg btn-success">Back to List</a>
+        </small>
+    </h1>
+    <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+        <div class="panel-heading">
+            <h4 class="panel-title">Create a New FAQ</h4>
+        </div>
+        <div class="panel-body">
+            @if (Model.ShowSuccessToast)
+            {
+                <div class="alert alert-success">
+                    The FAQ was created successfully.
+                </div>
+
+            }
+
+
+            <form method="post"
+                  asp-action="Create"
+                  asp-controller="Faq">
+                
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+
+                
+
+                <div class="form-group row m-b-15">
+                    <label asp-for="Faq.Question" class="col-form-label col-md-3"></label>
+                    <div class="col-md-9">
+                        <textarea asp-for="Faq.Question" class="form-control m-b-5" rows="3" placeholder="Question"></textarea>
+                        <small class="f-s-12 text-danger"><span asp-validation-for="Faq.Question" class="text-danger"></span></small>
+                    </div>
+                </div>
+                <div class="form-group row m-b-15">
+                    <label asp-for="Faq.Answer" class="col-form-label col-md-3"></label>
+                    <div class="col-md-9">
+                        <textarea asp-for="Faq.Answer" class="form-control m-b-5" rows="6" placeholder="Answer"></textarea>
+                        <small class="f-s-12 text-danger"><span asp-validation-for="Faq.Answer" class="text-danger"></span></small>
+                    </div>
+                </div>
+
+                
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create FAQ" class="btn btn-success" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+        
+    }
+

@@ -1,0 +1,165 @@
+@model AT.Models.CheckoutViewModels.CheckoutVM
+@using AT.Data.Courses
+
+@{
+    ViewData["Title"] = "CheckoutCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-container" id="checkout-cart">
+    <!-- BEGIN container -->
+    <div class="container">
+        <!-- BEGIN checkout -->
+        <div class="checkout">
+            <form asp-action="CheckoutPayment"
+                  asp-controller="Checkout"
+                  method="POST"
+                  name="form_checkout">
+                <!-- BEGIN checkout-header -->
+                <div class="checkout-header">
+                    <!-- BEGIN row -->
+                    <div class="row">
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="#">
+                                    <div class="number">1</div>
+                                    <div class="info">
+                                        <div class="title">Courses</div>
+                                        <div class="desc">Your order details</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step active">
+                                <a href="">
+                                    <div class="number">2</div>
+                                    <div class="info">
+                                        <div class="title">Personal Details</div>
+                                        <div class="desc">Your details.</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">3</div>
+                                    <div class="info">
+                                        <div class="title">Payment</div>
+                                        <div class="desc">Your Card Details </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step">
+                                <a href="">
+                                    <div class="number">4</div>
+                                    <div class="info">
+                                        <div class="title">Complete Payment</div>
+                                        <div class="desc">Confirmation</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                    </div>
+                    <!-- END row -->
+                </div>
+                <!-- END checkout-header -->
+                <div class="checkout-body d-flex justify-content-center">
+                    
+                    <div class="col-8">
+
+
+                        <label class="control-label">Name <span class="text-danger">*</span></label>
+                        <div class="row row-space-10">
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="FirstName" type="text" class="form-control" placeholder="First name" required />
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="LastName" type="text" class="form-control" placeholder="Last name" required />
+                            </div>
+                        </div>
+                        <label class="control-label">Company Details <span class="text-danger">*</span></label>
+                        <div class="row row-space-10">
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="Company" type="text" class="form-control" placeholder="Company Name" required />
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="Division" type="text" class="form-control" placeholder="Department" required />
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="JobTitle" type="text" class="form-control" placeholder="Job Title" required />
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="Mobile" type="text" class="form-control" placeholder="Mobile" required />
+                            </div>
+                        </div>
+                        <label class="control-label">Email <span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                <input asp-for="Email"
+                                       type="text" class="form-control" placeholder="Email address" required />
+                            </div>
+                        </div>
+
+                        <label class="control-label">Password <span class="text-danger">*</span></label>
+                        <div class="row m-b-15">
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password" required />
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required />
+                            </div>
+                        </div>
+                        <div class="checkbox checkbox-css m-b-30">
+                            <div class="checkbox checkbox-css m-b-30">
+                                <input type="checkbox" id="agreement_checkbox" value="">
+                                <label for="agreement_checkbox">
+                                    Tick to agree to our
+                                    <a asp-controller="Home" asp-action="Terms">Terms</a>
+                                    and that you have read our
+                                    <a asp-controller="Home" asp-action="Privacy">Data Policy</a>,
+                                    including our <a asp-controller="Home" asp-action="Cookies">Cookie Use</a>.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+
+                    <div class="checkout-footer">
+
+                        <button id="registerPost"
+                                type="submit"
+                                class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10"
+                                disabled>
+                            Payment Details >>
+                        </button>
+                    </div>
+</form>
+</div>
+        </div>
+    </div>
+
+@section scripts{
+<script type='text/javascript'>
+
+    var checker = document.getElementById('agreement_checkbox');
+            var sendbtn = document.getElementById('registerPost');
+            checker.onchange = function () {
+
+                sendbtn.disabled = !this.checked;
+            };
+
+</script>
+}

@@ -1,0 +1,63 @@
+@model  IPagedList<AT.Models.CourseViewModels.UserCourseVM>
+@using  AT.Models.CourseViewModels
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<div id="content" class="content">
+    <div class="panel panel-inverse" data-sortable-id="table-basic-7">
+        <!-- begin panel-heading -->
+        <div class="panel-heading">
+            <h4 class="panel-title">User Courses</h4>
+        </div>
+
+        <div class="panel-body">
+            <!-- begin table-responsive -->
+            <div class="table-responsive">
+                <table class="table table-striped m-b-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Enrolled On</th>
+                            <th width="1%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (UserCourseVM uc in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@uc.FirstName <text> </text>@uc.LastName</td>
+                                <td>@uc.Email</td>
+                                <td>@uc.CourseName</td>
+                                <td>@uc.EnrolledOn.ToString("dd-MMM-yyyy")</td>
+                                <td class="with-btn" nowrap>
+                                    <a asp-controller="Admin"
+                                       asp-action ="Edit"
+                                       asp-route-id="@uc.UserId"
+                                       asp-roure-course="@uc.CourseId"
+                                       class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
+                                    <a asp-controller="Admin"
+                                       asp-action ="Delete"
+                                       asp-route-id="@uc.UserId"
+                                       asp-roure-course="@uc.CourseId"
+                                       class="btn btn-sm btn-white width-60">Delete</a>
+                                </td>
+                            </tr>
+
+                        }
+                        
+                    
+                       
+                    </tbody>
+                </table>
+            </div>
+            <!-- end table-responsive -->
+        </div>
+
+</div>
+</div>

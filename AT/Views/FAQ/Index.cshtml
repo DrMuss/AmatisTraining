@@ -1,0 +1,78 @@
+@model IPagedList<AT.Data.FAQ.FAQ>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<div id="content" class="content">
+    <!-- begin page-header -->
+    <h1 class="page-header">
+        Frequently Asked Questions <small>
+            <a class="btn btn-success"
+               asp-controller="Faq"
+               asp-action="Create">Create New</a>
+        </small>
+    </h1>
+    <!-- end page-header -->
+    <!-- begin panel -->
+    <div class="panel panel-inverse" data-sortable-id="table-basic-7">
+        <!-- begin panel-heading -->
+        <div class="panel-heading">
+
+            <h4 class="panel-title">Frequently Asked Questions</h4>
+        </div>
+        <!-- end panel-heading -->
+        <!-- begin panel-body -->
+        <div class="panel-body">
+            <!-- begin table-responsive -->
+            <div class="table-responsive">
+                <table class="table table-striped m-b-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                           
+                            <th></th>
+                            <th width="1%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@item.Question</td>
+                                @{int maxLength = Math.Min(item.Answer.Length, 80);}
+                                
+                                <td>@item.Answer.Substring(0, maxLength)</td>
+                               
+                                <td class="with-btn" nowrap>
+                                    <a asp-controller="Faq"
+                                       asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-warning width-60 m-r-2">Edit</a>
+                                    <a asp-action="Delete"
+                                       asp-controller="Faq"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-danger width-60">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- end table-responsive -->
+        </div>
+        <!-- end panel-body -->
+
+    </div>
+    <!-- end panel -->
+
+</div>
+
+

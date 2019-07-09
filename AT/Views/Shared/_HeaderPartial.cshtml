@@ -1,0 +1,56 @@
+﻿<!-- BEGIN #header -->
+<div id="header" class="header" data-fixed-top="true">
+    <!-- BEGIN container -->
+    <div class="container">
+        <!-- BEGIN header-container -->
+        <div class="header-container">
+            <!-- BEGIN navbar-header -->
+           
+            <!-- END navbar-header -->
+            <!-- BEGIN header-nav -->
+            <div class="header-nav">
+                <div class=" collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <ul class="nav">
+                       
+                        <li><a asp-controller="Blog" asp-action="Blog">Blog</a></li>
+
+                        <li><a asp-controller="FAQ" asp-action="FAQs">FAQs</a></li>
+
+                      
+                        <li><a asp-controller="Home" asp-action="About">About Us</a></li>
+                        <li><a asp-controller="Contact" asp-action="Contact">Contact Us</a></li>
+                     
+                    </ul>
+                </div>
+            </div>
+            <!-- END header-nav -->
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="header-logo">
+                    <a asp-controller="Home" asp-action="Index">
+                        <img src="~/images/logo/Amatis_Logo_Primary_Black_RGB small.png" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- BEGIN header-nav -->
+            <div class="header-nav">
+                <ul class="nav pull-right">
+                    @Component.InvokeAsync("CartVC").Result
+                    <li class="divider"></li>
+                    @Html.Partial("_LoginPartial")
+                    
+                </ul>
+            </div>
+            <!-- END header-nav -->
+        </div>
+        <!-- END header-container -->
+    </div>
+    <!-- END container -->
+</div>
+<!-- END #header -->

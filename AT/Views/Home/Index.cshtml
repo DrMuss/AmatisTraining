@@ -1,108 +1,235 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+	<!-- BEGIN #slider -->
+<div id="slider" class="section-container p-0 bg-black-darker">
+    <!-- BEGIN carousel -->
+    <div id="main-carousel" class="carousel slide" data-ride="carousel">
+        <!-- BEGIN carousel-inner -->
+        <div class="carousel-inner">
+            <!-- BEGIN item -->
+            <div class="carousel-item active" data-paroller="true" 
+                 data-paroller-factor="0.3" data-paroller-factor-sm="0.01" 
+                 data-paroller-factor-xs="0.01" 
+                 style="background: url(../../images/slider/slider-1-cover.jpg) center 0 / cover no-repeat;">
+                <div class="container">
+                    <img src="../../images/slider/slider-1-product.png" class="product-img right bottom fadeInRight animated" alt="" />
+                </div>
+                <div class="carousel-caption carousel-caption-left">
+                    <div class="container">
+                        <h3 class="title m-b-5 fadeInLeftBig animated">Amatis Training</h3>
+                        <p class="m-b-15 fadeInLeftBig animated">The vision is brighter than ever.</p>
+                       
+                        <a href="product_detail.html" class="btn btn-outline btn-lg fadeInLeftBig animated">Register Now</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+            <!-- END item -->
+            <!-- BEGIN item -->
+            <div class="carousel-item" data-paroller="true" 
+                 data-paroller-factor="-0.3" data-paroller-factor-sm="0.01" data-paroller-factor-xs="0.01" 
+                 style="background: url(../../images/slider/slider-2-cover.jpg) center 0 / cover no-repeat;">
+                <div class="container">
+                    <img src="../../images/slider/slider-2-product.png" class="product-img left bottom fadeInLeft animated" alt="" />
+                </div>
+                <div class="carousel-caption carousel-caption-right">
+                    <div class="container">
+                        <h3 class="title m-b-5 fadeInRightBig animated">BCS Exams</h3>
+                        <p class="m-b-15 fadeInRightBig animated">Say hello to the future.</p>
+                        <div class="price m-b-30 fadeInRightBig animated"><small>from</small> <span>£200.00</span></div>
+                        <a href="product_detail.html" class="btn btn-outline btn-lg fadeInRightBig animated">Buy Now</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+            <!-- END item -->
+            <!-- BEGIN item -->
+            <div class="carousel-item" data-paroller="true" 
+                 data-paroller-factor="-0.3" 
+                 data-paroller-factor-sm="0.01" 
+                 data-paroller-factor-xs="0.01" 
+                 style="background: url(../../images/slider/slider-3-cover.jpg) center 0 / cover no-repeat;">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <h3 class="title m-b-5 fadeInDownBig animated">Mentoring</h3>
+                        <p class="m-b-15 fadeInDownBig animated">Thin.Light.Powerful.<br />And ready for anything</p>
+                        <div class="price fadeInDownBig animated"><small>from</small> <span>£200.00</span></div>
+                        <a href="product_detail.html" 
+                           class="btn btn-outline btn-lg fadeInUpBig animated">Buy Now</a>
+                    </div>
+                </div>
             </div>
+            <!-- END item -->
         </div>
-        <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
+        <!-- END carousel-inner -->
+        <a class="carousel-control-prev" href="#main-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#main-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <!-- END carousel -->
 </div>
+<!-- END #slider -->
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+<div id="about" class="content" data-scrollview="true">
+   <!-- begin container -->
+        @Component.InvokeAsync("CourseVC").Result
+        </div>
+
+
+		<!-- begin #client -->
+<div id="client" class="content has-bg bg-green" data-scrollview="true">
+    <!-- begin content-bg -->
+   
+    <div class="content-bg" style="background-image: url(../../images/bg/bg-client.jpg)"
+         data-paroller-factor="0.5"
+         data-paroller-factor-md="0.01"
+         data-paroller-factor-xs="0.01">
     </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
+    <!-- end content-bg -->
+    <!-- begin container -->
+    <div class="container" data-animation="true" data-animation-type="fadeInUp">
+        <h2 class="content-title-about">Our Client Testimonials</h2>
+        <!-- begin carousel -->
+        <div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
+            <!-- begin carousel-inner -->
+            <div class="carousel-inner-test text-center">
+                <!-- begin item -->
+                <div class="carousel-item active">
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra, nulla ut interdum fringilla,<br />
+                        urna massa cursus lectus, eget rutrum lectus neque non ex.
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                    <div class="name"> — <span class="text-theme">Mark Doe</span>, Designer</div>
+                </div>
+                <!-- end item -->
+                <!-- begin item -->
+                <div class="carousel-item">
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i>
+                        Donec cursus ligula at ante vulputate laoreet. Nulla egestas sit amet lorem non bibendum.<br />
+                        Nulla eget risus velit. Pellentesque tincidunt velit vitae tincidunt finibus.
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                    <div class="name"> — <span class="text-theme">Joe Smith</span>, Developer</div>
+                </div>
+                <!-- end item -->
+                <!-- begin item -->
+                <div class="carousel-item">
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i>
+                        Sed tincidunt quis est sed ultrices. Sed feugiat auctor ipsum, sit amet accumsan elit vestibulum<br />
+                        fringilla. In sollicitudin ac ligula eget vestibulum.
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                    <div class="name"> — <span class="text-theme">Linda Adams</span>, Programmer</div>
+                </div>
+                <!-- end item -->
+            </div>
+            <!-- end carousel-inner -->
+            <!-- begin carousel-indicators -->
+            <ol class="carousel-indicators m-b-0">
+                <li data-target="#testimonials" data-slide-to="0" class="active"></li>
+                <li data-target="#testimonials" data-slide-to="1" class=""></li>
+                <li data-target="#testimonials" data-slide-to="2" class=""></li>
+            </ol>
+            <!-- end carousel-indicators -->
+        </div>
+        <!-- end carousel -->
     </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
+    <!-- end containter -->
 </div>
+<!-- end #client -->
+
+<div id="service" class="content" data-scrollview="true">
+    <!-- begin container -->
+    <div class="container">
+        <h2 class="content-title-about">Our Services</h2>
+        <p class="content-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
+            sed bibendum turpis luctus eget
+        </p>
+        <!-- begin row -->
+        <div class="row">
+            <!-- begin col-4 -->
+            <div class="col-md-4 col-sm-12">
+                <div class="service">
+                    <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
+                    <div class="info">
+                        <h4 class="title">Easy to Customize</h4>
+                        <p class="desc">Duis in lorem placerat, iaculis nisi vitae, ultrices tortor. Vestibulum molestie ipsum nulla. Maecenas nec hendrerit eros, sit amet maximus leo.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end col-4 -->
+            <!-- begin col-4 -->
+            <div class="col-md-4 col-sm-12">
+                <div class="service">
+                    <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-paint-brush"></i></div>
+                    <div class="info">
+                        <h4 class="title">Clean & Careful Design</h4>
+                        <p class="desc">Etiam nulla turpis, gravida et orci ac, viverra commodo ipsum. Donec nec mauris faucibus, congue nisi sit amet, lobortis arcu.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end col-4 -->
+            <!-- begin col-4 -->
+            <div class="col-md-4 col-sm-12">
+                <div class="service">
+                    <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-file"></i></div>
+                    <div class="info">
+                        <h4 class="title">Well Documented</h4>
+                        <p class="desc">Ut vel laoreet tortor. Donec venenatis ex velit, eget bibendum purus accumsan cursus. Curabitur pulvinar iaculis diam.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end col-4 -->
+        </div>
+        <!-- end row -->
+        <!-- begin row -->
+        <div class="row">
+            <!-- begin col-4 -->
+            <div class="col-md-4 col-sm-12">
+                <div class="service">
+                    <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-code"></i></div>
+                    <div class="info">
+                        <h4 class="title">Re-usable Code</h4>
+                        <p class="desc">Aenean et elementum dui. Aenean massa enim, suscipit ut molestie quis, pretium sed orci. Ut faucibus egestas mattis.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end col-4 -->
+            <!-- begin col-4 -->
+            <div class="col-md-4 col-sm-12">
+                <div class="service">
+                    <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
+                    <div class="info">
+                        <h4 class="title">Online Shop</h4>
+                        <p class="desc">Quisque gravida metus in sollicitudin feugiat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end col-4 -->
+            <!-- begin col-4 -->
+            <div class="col-md-4 col-sm-12">
+                <div class="service">
+                    <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-heart"></i></div>
+                    <div class="info">
+                        <h4 class="title">Free Support</h4>
+                        <p class="desc">Integer consectetur, massa id mattis tincidunt, sapien erat malesuada turpis, nec vehicula lacus felis nec libero. Fusce non lorem nisl.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end col-4 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+<!-- end #about -->
+
